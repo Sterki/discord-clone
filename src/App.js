@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./components/SidebarLeft";
+import "./App.css";
+import SidebarLeft from "./components/SidebarLeft";
+import Header from "./components/Header";
+import Sidebarprincipal from "./components/Sidebarprincipal";
+import Chat from "./components/Chat";
+import SidebarRight from "./components/SidebarRight";
+import Subheader from "./components/Subheader";
+import Login from "./components/Login";
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!user ? (
+        <div className="login">
+          <Login />
+        </div>
+      ) : (
+        <div className="app">
+          <SidebarLeft />
+          <div className="app__content">
+            {/* header */}
+            <Header />
+            <Subheader />
+            {/* channel */}
+            <div className="app__content2">
+              <Sidebarprincipal />
+              <Chat />
+              <SidebarRight />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

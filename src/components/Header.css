@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+.header > span {
+  font-weight: 800;
+  margin-right: 1rem;
+  text-transform: uppercase;
+}
+.header > p {
+  margin-right: 1rem;
+}
+.header > button {
+  padding: 0.3rem;
+  border: 1px solid white;
+  background-color: rgb(32, 34, 36);
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+}
+.header > button:hover {
+  transition: all 0.2s;
+  background-color: white;
+  color: rgb(32, 34, 36);
+}

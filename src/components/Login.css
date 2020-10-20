@@ -1,0 +1,30 @@
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login > img {
+  height: 200px;
+  border-radius: 10px;
+}
+.login > button {
+  width: 14rem;
+  margin-top: 2rem;
+  padding: 0.4rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: rgb(114, 137, 220);
+  outline: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.login > button:hover {
+  transition: all 0.2s;
+  color: rgb(114, 137, 220);
+  background-color: white;
+  border: 1px solid rgb(114, 137, 220);
+}

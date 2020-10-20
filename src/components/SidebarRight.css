@@ -1,0 +1,11 @@
+.sidebarright {
+  background-color: rgb(49, 50, 51);
+  flex: 0.2;
+  padding: 1rem;
+}
+.sidebarright__conected {
+  color: gray;
+}
+.sidebarright__conected > h4 {
+  font-weight: 600;
+}

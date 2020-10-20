@@ -1,0 +1,24 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+.message > .MuiAvatar-root {
+  margin-right: 1rem;
+}
+.message > p {
+  color: rgb(172, 171, 171);
+  margin-right: 1rem;
+}
+.message__info {
+  display: flex;
+  align-items: center;
+}
+.message__info > p {
+  margin-left: 1rem;
+  color: rgb(173, 173, 173);
+}
+.message__content > p {
+  color: rgb(173, 173, 173);
+  padding: 0rem 2rem;
+}

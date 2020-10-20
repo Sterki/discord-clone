@@ -1,0 +1,100 @@
+.sidebarprincipal {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(49, 50, 51);
+  flex: 0.3;
+  height: 87vh;
+}
+.sidebarprincipal__channelcontent {
+  background-color: rgb(50, 50, 51);
+  flex: 1;
+}
+.sidebarprincipal__footer {
+  background-color: rgb(41, 40, 40);
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: space-between;
+}
+.sidebarprincipal__icons {
+}
+
+.sidebarprincipal__icons > .MuiSvgIcon-root {
+  color: gray;
+  padding: 0.3rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sidebarprincipal__icons > .MuiSvgIcon-root:hover {
+  color: rgb(201, 199, 199);
+  background-color: rgb(71, 71, 71);
+}
+.sidebarprincipal__avatar {
+  display: flex;
+  align-items: center;
+}
+.sidebarprincipal__username {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0.3rem;
+}
+.sidebarprincipal__username > h4 {
+  color: white;
+}
+.sidebarprincipal__username > p {
+  color: gray;
+}
+.sidebarprincipal__channelcontent {
+  padding: 0.5rem;
+}
+.sidebarprincipal__channelcontent > p {
+  color: gray;
+}
+.sidebarprincipal__channelname {
+  display: flex;
+  align-items: center;
+  color: gray;
+  cursor: pointer;
+}
+.sidebarprincipal__channelname:hover {
+  transition: all 0.2s;
+  background-color: rgb(59, 59, 59);
+  color: rgb(214, 214, 214);
+}
+.sidebarprincipal__channelname > span {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-right: 0.5rem;
+}
+
+.sidebarprincipal__channelname > p {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.sidebarprincipal__expandmoreicon {
+  display: flex;
+  align-items: center;
+  color: gray;
+  cursor: pointer;
+}
+.sidebarprincipal__expandmoreicon:hover {
+  transition: all 0.2s;
+  color: rgb(214, 214, 214);
+}
+.sidebarprincipal__typechannel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sidebarprincipal__addicon {
+  color: gray;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.sidebarprincipal__addicon:hover {
+  transition: all 0.2s;
+  color: rgb(214, 214, 214);
+}
