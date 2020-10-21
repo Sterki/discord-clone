@@ -1,0 +1,15 @@
+.channel {
+  display: flex;
+  padding: 0.3rem;
+  color: rgb(155, 153, 153);
+  cursor: pointer;
+  font-weight: 600;
+}
+.channel > span {
+  margin-right: 0.5rem;
+}
+.channel:hover {
+  transition: all 0.2s;
+  background-color: rgb(59, 59, 59);
+  color: rgb(214, 214, 214);
+}

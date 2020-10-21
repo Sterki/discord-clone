@@ -1,7 +1,6 @@
 .sidebarleft {
   display: flex;
   flex-direction: column;
-  padding: 0.6rem;
   justify-content: center;
   align-items: center;
   background-color: rgb(32, 34, 36);
@@ -11,7 +10,7 @@
   margin-bottom: 0.5rem;
 }
 .sidebarleft > img {
-  height: 25px;
+  height: 20px;
   object-fit: contain;
   margin-bottom: 1rem;
 }

@@ -6,8 +6,10 @@
   justify-content: center;
 }
 .login > img {
-  height: 200px;
+  height: 300px;
+  width: 300px;
   border-radius: 10px;
+  object-fit: contain;
 }
 .login > button {
   width: 14rem;

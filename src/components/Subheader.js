@@ -12,7 +12,7 @@ function Subheader() {
   return (
     <div className="subheader">
       <div className="subheader__title">
-        <h2>ServerName</h2>
+        <h2>Developers </h2>
         <ExpandMoreIcon />
       </div>
       <div className="subheader__info">
