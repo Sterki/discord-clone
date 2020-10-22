@@ -10,6 +10,9 @@ import db from "./../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "firebase";
 import { getMessageAction } from "./../actions/messageAction";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import Filter1Icon from "@material-ui/icons/Filter1";
+import Filter2Icon from "@material-ui/icons/Filter2";
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -54,37 +57,66 @@ function Chat() {
   return (
     <div className="chat">
       <div className="chat__chatcontainer">
-        {messages?.map((message) => (
-          <Message
-            key={message.messageid}
-            post={message.post}
-            user={message.post.user}
-            created={message.post.created}
-            id={message.messageid}
-          />
-        ))}
+        {channelid ? (
+          messages.map((message) => (
+            <Message
+              key={message.messageid}
+              post={message.post}
+              user={message.post.user}
+              created={message.post.created}
+              id={message.messageid}
+            />
+          ))
+        ) : (
+          <>
+            <h1>Wellcome to the chat</h1>
+            <div className="chat__wellcome">
+              <Filter1Icon />
+              <p>
+                If you're new as a developer or just want to program a little,
+                this is the best place to get all your doubts about web
+                development
+              </p>
+            </div>
+            <div className="chat__wellcome">
+              <Filter2Icon />
+              <p>
+                Select a channel and start a conversation, people will see your
+                comment immediately and solve your problems or doubts
+              </p>
+            </div>
+            <p>
+              ##############################################################
+            </p>
+            <p>Let's code!!!!</p>
+          </>
+        )}
       </div>
       <div className="chat__inputmessage">
-        <form className="chat__form">
-          <div className="chat__input">
-            <ControlPointIcon />
-            <input
-              type="text"
-              placeholder="Send a message ..."
-              name="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <button type="submit" onClick={handleClick}>
-              Send Message
-            </button>
-          </div>
-        </form>
-        <div className="chat__icons">
-          <CardGiftcardIcon />
-          <GifIcon />
-          <MoodIcon />
-        </div>
+        {channelid ? (
+          <>
+            <form className="chat__form">
+              <div className="chat__input">
+                <ControlPointIcon />
+                <input
+                  type="text"
+                  placeholder="Send a message ..."
+                  name="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button type="submit" onClick={handleClick}>
+                  Send Message
+                </button>
+              </div>
+            </form>
+            <div className="chat__icons">
+              <CardGiftcardIcon />
+              <GifIcon />
+              <MoodIcon />
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   );

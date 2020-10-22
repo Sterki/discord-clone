@@ -5,6 +5,7 @@
 }
 .sidebarright__conected {
   color: gray;
+  margin-bottom: 2rem;
 }
 .sidebarright__conected > h4 {
   font-weight: 600;

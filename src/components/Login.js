@@ -17,26 +17,6 @@ function Login() {
           uid: result.user.uid,
           status: true,
         });
-        // .where("uid", "==", result.user.uid)
-        // .get()
-        // .then(function (doc) {
-        //   if (doc) {
-        //     db.collection("users").doc(result.user.uid).set({
-        //       status: "disconected",
-        //     });
-        //   } else {
-        //     db.collection("users").add({
-        //       displayName: result.user.displayName,
-        //       photo: result.user.photoURL,
-        //       uid: result.user.uid,
-        //       email: result.user.email,
-        //       status: "conected",
-        //     });
-        //   }
-        // })
-        // .catch((error) => {
-        //   alert(error.message);
-        // });
       })
       .catch((error) => {
         alert(error.message);

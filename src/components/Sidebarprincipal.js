@@ -13,19 +13,25 @@ import db from "./../firebase";
 import firebase from "firebase";
 import { setChannelAction } from "./../actions/channelAction";
 
+
 function Sidebarprincipal() {
   const user = useSelector((state) => state.user.user);
   const channels = useSelector((state) => state.channels.channels);
   const dispatch = useDispatch();
   const handleClick = () => {
     auth.signOut();
-    db.collection("users").doc(user.uid).set({
-      displayName: user.displayName,
-      email: user.email,
-      photo: user.photo,
-      uid: user.uid,
-      status: false,
-    });
+    db.collection("users")
+      .doc(user.uid)
+      .update({
+        displayName: user.displayName,
+        email: user.email,
+        photo: user.photo,
+        uid: user.uid,
+        status: false,
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   const handleClickAdd = () => {
     let channelname = prompt("Choice a name for your Channel");
