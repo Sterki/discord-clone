@@ -22,6 +22,11 @@
   display: flex;
   justify-content: space-between;
 }
+.chat__form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
 .chat__input {
   display: flex;
   align-items: center;
@@ -35,6 +40,12 @@
   color: rgb(199, 199, 202);
   background-color: transparent;
   outline: none;
+}
+.chat__input > button {
+  border: none;
+  display: none;
+  width: 10rem;
+  border-radius: 5px;
 }
 .chat__icons > .MuiSvgIcon-root {
   margin-left: 0.5rem;

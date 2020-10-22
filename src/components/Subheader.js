@@ -8,7 +8,10 @@ import CallToActionIcon from "@material-ui/icons/CallToAction";
 import SearchIcon from "@material-ui/icons/Search";
 import HelpIcon from "@material-ui/icons/Help";
 import "./Subheader.css";
+import { useSelector } from "react-redux";
 function Subheader() {
+  const channelName = useSelector((state) => state.channels.channelinfo);
+
   return (
     <div className="subheader">
       <div className="subheader__title">
@@ -16,7 +19,7 @@ function Subheader() {
         <ExpandMoreIcon />
       </div>
       <div className="subheader__info">
-        <span>#</span> <h3>Channel name</h3>
+        <span>#</span> <h3>{channelName?.channel}</h3>
       </div>
       <div className="subheader__icons">
         <NotificationsIcon />

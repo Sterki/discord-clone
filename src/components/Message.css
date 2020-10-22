@@ -16,7 +16,11 @@
 }
 .message__info > p {
   margin-left: 1rem;
-  color: rgb(173, 173, 173);
+  color: rgb(231, 227, 227);
+}
+.message__info > span {
+  margin-left: 1rem;
+  color: gray;
 }
 .message__content > p {
   color: rgb(173, 173, 173);

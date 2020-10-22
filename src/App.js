@@ -13,7 +13,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserAuthAction } from "./actions/userAction";
-
+import db from "./firebase";
 const wrapApp = () => {
   return (
     <Provider store={store}>
@@ -44,7 +44,9 @@ function App() {
         dispatch(setUserAuthAction(null));
       }
     });
-  }, []);
+  }, [dispatch]);
+
+ 
   return (
     <>
       <Provider store={store}>

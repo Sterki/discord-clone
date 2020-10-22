@@ -19,6 +19,13 @@ function Sidebarprincipal() {
   const dispatch = useDispatch();
   const handleClick = () => {
     auth.signOut();
+    db.collection("users").doc(user.uid).set({
+      displayName: user.displayName,
+      email: user.email,
+      photo: user.photo,
+      uid: user.uid,
+      status: false,
+    });
   };
   const handleClickAdd = () => {
     let channelname = prompt("Choice a name for your Channel");
@@ -44,7 +51,7 @@ function Sidebarprincipal() {
           )
         );
       });
-  }, []);
+  }, [dispatch]);
   return (
     <div className="sidebarprincipal">
       <div className="sidebarprincipal__channelcontent">

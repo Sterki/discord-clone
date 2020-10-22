@@ -1,0 +1,21 @@
+.usersconected {
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.usersconected > .MuiAvatar-root {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+.usersconected > .MuiSvgIcon-root {
+  position: absolute;
+  left: 14%;
+  top: 55%;
+  color: rgb(39, 139, 39);
+  width: 1rem;
+  height: 1rem;
+  background-color: rgb(49, 50, 51);
+  border-radius: 20px;
+}
