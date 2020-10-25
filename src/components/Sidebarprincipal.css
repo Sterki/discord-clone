@@ -32,6 +32,9 @@
   display: flex;
   align-items: center;
 }
+.sidebarprincipal__avatar > .MuiAvatar-root {
+  cursor: pointer;
+}
 .sidebarprincipal__username {
   display: flex;
   flex-direction: column;

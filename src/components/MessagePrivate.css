@@ -1,0 +1,39 @@
+.messageprivate__ptag1color {
+  margin-bottom: 0.5rem;
+  color: rgb(68, 68, 68);
+  background-color: rgb(215, 215, 216);
+  padding: 0.6rem;
+  font-weight: 400;
+  font-family: sans-serif;
+  min-width: 8rem;
+  border-radius: 5px;
+  margin-right: 1rem;
+}
+.messageprivate__ptag2color {
+  margin-bottom: 0.5rem;
+  color: rgb(41, 41, 41);
+  padding: 0.6rem;
+  font-weight: 400;
+  font-family: sans-serif;
+  min-width: 8rem;
+  border-radius: 5px;
+  background-color: #addce8;
+  margin-right: 1rem;
+}
+.messageprivate > .MuiAvatar-root {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+.messageprivate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.messageprivate2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.messageprivate__time {
+  color: gray;
+}

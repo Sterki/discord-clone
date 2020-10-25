@@ -44,6 +44,7 @@ function UsersConected({ userdisc }) {
       .add({
         message: message,
         receptor: user.uid,
+        classname: "sender",
         created: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((error) => {
@@ -55,6 +56,7 @@ function UsersConected({ userdisc }) {
       .add({
         message: message,
         receptor: userdisc.uid,
+        classname: "recepter",
         created: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .catch((error) => {
@@ -131,12 +133,15 @@ function UsersConected({ userdisc }) {
           </div>
         </Fade>
       </Modal>
-      <Menu menuButton={<Avatar src={userdisc.photo} />}>
-        <MenuItem onClick={handleOpen}>Chat</MenuItem>
-        <MenuItem>Add as Friend</MenuItem>
-        <MenuItem>Report User</MenuItem>
-      </Menu>
-
+      {user.uid !== userdisc.uid ? (
+        <Menu menuButton={<Avatar src={userdisc.photo} />}>
+          <MenuItem onClick={handleOpen}>Chat</MenuItem>
+          {/* <MenuItem>Add as Friend</MenuItem>
+        <MenuItem>Report User</MenuItem> */}
+        </Menu>
+      ) : (
+        <Avatar src={userdisc.photo} />
+      )}
       <h5>{userdisc.displayName}</h5>
       <FiberManualRecordIcon />
     </div>
