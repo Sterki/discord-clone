@@ -8,6 +8,7 @@
   width: 2rem;
   height: 2rem;
   margin-right: 0.5rem;
+  cursor: pointer;
 }
 .usersconected > .MuiSvgIcon-root {
   position: absolute;

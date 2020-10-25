@@ -1,4 +1,3 @@
-import { Avatar } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import "./Chat.css";
 import Message from "./Message";
@@ -10,9 +9,15 @@ import db from "./../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "firebase";
 import { getMessageAction } from "./../actions/messageAction";
-import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
 import Filter1Icon from "@material-ui/icons/Filter1";
 import Filter2Icon from "@material-ui/icons/Filter2";
+import UIfx from "uifx";
+import discord from "./../static/sounds/discord-notification.mp3";
+
+const bell = new UIfx(discord, {
+  volume: 0.4, // number between 0.0 ~ 1.0
+  throttleMs: 100,
+});
 
 function Chat() {
   const [message, setMessage] = useState("");
@@ -20,6 +25,7 @@ function Chat() {
   const messages = useSelector((state) => state.messages.messages);
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+
   const handleClick = (e) => {
     e.preventDefault();
     db.collection("channels")
@@ -34,6 +40,9 @@ function Chat() {
         console.log(error.message);
       });
     setMessage("");
+    bell.play();
+    let chat = document.getElementById("chat__chatcontainer");
+    chat.scrollTop = chat.scrollHeight;
   };
 
   useEffect(() => {
@@ -53,10 +62,11 @@ function Chat() {
           );
         });
     }
-  }, [channelid]);
+  }, [channelid, dispatch]);
+
   return (
     <div className="chat">
-      <div className="chat__chatcontainer">
+      <div className="chat__chatcontainer" id="chat__chatcontainer">
         {channelid ? (
           messages.map((message) => (
             <Message
@@ -92,6 +102,7 @@ function Chat() {
           </>
         )}
       </div>
+
       <div className="chat__inputmessage">
         {channelid ? (
           <>

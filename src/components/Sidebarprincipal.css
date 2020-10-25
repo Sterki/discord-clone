@@ -15,8 +15,7 @@
   align-items: center;
   padding: 0.5rem;
   justify-content: space-between;
-}
-.sidebarprincipal__icons {
+  position: relative;
 }
 
 .sidebarprincipal__icons > .MuiSvgIcon-root {
@@ -91,4 +90,35 @@
 .sidebarprincipal__addicon:hover {
   transition: all 0.2s;
   color: rgb(214, 214, 214);
+}
+.sidebarprincipal__conected > .MuiSvgIcon-root {
+  color: rgb(39, 139, 39);
+  width: 1rem;
+  background-color: rgb(233, 233, 233);
+  border-radius: 50px;
+  height: 1rem;
+  margin-right: 1rem;
+}
+.sidebarprincipal__disconected > .MuiSvgIcon-root {
+  color: rgb(68, 68, 68);
+  background-color: rgb(233, 233, 233);
+  border-radius: 50px;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+}
+.sidebarprincipal__ocupied > .MuiSvgIcon-root {
+  color: rgb(185, 9, 9);
+  width: 1rem;
+  background-color: rgb(233, 233, 233);
+  border-radius: 50px;
+  height: 1rem;
+  margin-right: 1rem;
+}
+.sidebarprincipal__logout > .MuiSvgIcon-root {
+  margin-right: 1rem;
+  width: 1.4rem;
+
+  height: 1.4rem;
+  color: rgb(255, 255, 255);
 }

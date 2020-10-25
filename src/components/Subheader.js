@@ -1,6 +1,4 @@
 import React from "react";
-import MicIcon from "@material-ui/icons/Mic";
-
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import NotificationsIcon from "@material-ui/icons/Notifications";

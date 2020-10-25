@@ -10,16 +10,17 @@ const setChannel = (channels) => ({
   payload: channels,
 });
 
-export function getChannelInfoAction(channel, id) {
+export function getChannelInfoAction(channel, id, user) {
   return (dispatch) => {
-    dispatch(getChannel(channel, id));
+    dispatch(getChannel(channel, id, user));
   };
 }
 
-const getChannel = (channel, id) => ({
+const getChannel = (channel, id, user) => ({
   type: GET_CHANNEL,
   payload: {
     channel,
     id,
+    user,
   },
 });

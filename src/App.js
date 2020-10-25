@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./components/SidebarLeft";
 import "./App.css";
 import SidebarLeft from "./components/SidebarLeft";
@@ -13,7 +13,9 @@ import store from "./store";
 import { Provider } from "react-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserAuthAction } from "./actions/userAction";
-import db from "./firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateChat from "./components/PrivateChat";
+
 const wrapApp = () => {
   return (
     <Provider store={store}>
@@ -54,20 +56,22 @@ function App() {
             <Login />
           </div>
         ) : (
-          <div className="app">
-            <SidebarLeft />
-            <div className="app__content">
-              {/* header */}
-              <Header />
-              <Subheader />
-              {/* channel */}
-              <div className="app__content2">
-                <Sidebarprincipal />
-                <Chat />
-                <SidebarRight />
+          <>
+            <div className="app">
+              <SidebarLeft />
+              <div className="app__content">
+                {/* header */}
+                <Header />
+                <Subheader />
+                {/* channel */}
+                <div className="app__content2">
+                  <Sidebarprincipal />
+                  <Chat />
+                  <SidebarRight />
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </Provider>
     </>

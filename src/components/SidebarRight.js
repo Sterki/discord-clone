@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./SidebarRight.css";
 import db from "./../firebase";
-import { useSelector } from "react-redux";
 import UsersConected from "./UsersConected";
 import UserDisconected from "./UserDisconected";
 
 function SidebarRight() {
-  const user = useSelector((state) => state.user.user);
   const [userconected, setUserconected] = useState([]);
   const [userdisconected, setUserDisconected] = useState([]);
 
