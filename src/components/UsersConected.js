@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import db from "./../firebase";
 import firebase from "firebase";
 import MessagePrivate from "./MessagePrivate";
+import Picker from "emoji-picker-react";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,14 +20,44 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  menu: {
+    backgroundColor: "rgb(32, 34, 36)",
+    color: " #a6a6a6",
+    borderRadius: "15px",
+    padding: "0.2rem",
+    minWidth: "6rem",
+    "&:hover": {
+      color: "white",
+    },
+  },
+  menuitem: {
+    backgroundColor: "rgb(32, 34, 36)",
+    color: " #a6a6a6",
+    fontWeight: "600",
+    fontSize: "0.8rem",
+    "&:hover": {
+      color: "white",
+    },
+  },
 }));
 
 function UsersConected({ userconec }) {
   const user = useSelector((state) => state.user.user);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [message, setMessage] = useState("");
+  const [messager, setMessage] = useState({
+    message: "",
+  });
   const [messages, setMessages] = useState([]);
+  const [escribiendo, setEscribiendo] = useState(false);
+
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+  };
+
+  const { message } = messager;
 
   const handleOpen = () => {
     setOpen(true);
@@ -38,34 +69,39 @@ function UsersConected({ userconec }) {
 
   const handleClickSendMessage = (e) => {
     e.preventDefault();
-    db.collection("users")
-      .doc(userconec.uid)
-      .collection("messages")
-      .add({
-        message: message,
-        receptor: user.uid,
-        classname: "sender",
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-    db.collection("users")
-      .doc(user.uid)
-      .collection("messages")
-      .add({
-        message: message,
-        receptor: userconec.uid,
-        classname: "recepter",
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-
-    setMessage("");
-    let chat = document.getElementById("userdisconected__chat");
-    chat.scrollTop = chat.scrollHeight;
+    setEscribiendo(false);
+    if (message !== "") {
+      setEscribiendo(false);
+      console.log(escribiendo);
+      db.collection("users")
+        .doc(userconec.uid)
+        .collection("messages")
+        .add({
+          message: message,
+          receptor: user.uid,
+          classname: "sender",
+          created: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+      db.collection("users")
+        .doc(user.uid)
+        .collection("messages")
+        .add({
+          message: message,
+          receptor: userconec.uid,
+          classname: "recepter",
+          created: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+      setEscribiendo(false);
+      setMessage({ message: "" });
+      let chat = document.getElementById("userdisconected__chat");
+      chat.scrollTop = chat.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -80,6 +116,16 @@ function UsersConected({ userconec }) {
         );
       });
   }, [user.uid, userconec.uid]);
+
+  const handleChangeMessage = (e) => {
+    setEscribiendo(true);
+    console.log(escribiendo);
+    setMessage({
+      ...message,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <div className="usersconected">
       <Modal
@@ -96,9 +142,15 @@ function UsersConected({ userconec }) {
       >
         <Fade in={open}>
           <div className="userdisconected__modal">
-            <h2 id="transition-modal-title">
-              Chating with: {userconec.displayName}
-            </h2>
+            <div className="userdisconected__titlemodal">
+              <h2 id="transition-modal-title">
+                Chating with: {userconec.displayName}
+              </h2>
+              <p className={escribiendo ? "loading" : "noloading"}>
+                someone's writing
+              </p>
+            </div>
+
             <div className="userdisconected__chatcontainer">
               <div className="userdisconected__chat" id="userdisconected__chat">
                 {/* message here */}
@@ -122,8 +174,17 @@ function UsersConected({ userconec }) {
                   placeholder="type a message ...."
                   name="message"
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={handleChangeMessage}
                 />
+                {/* emojis here */}
+                {/* <div>
+                  {chosenEmoji ? (
+                    <span>You chose: {chosenEmoji.emoji}</span>
+                  ) : (
+                    <span>No emoji Chosen</span>
+                  )}
+                  <Picker onEmojiClick={onEmojiClick} />
+                </div> */}
                 <button type="submit" onClick={handleClickSendMessage}>
                   Send message
                 </button>
@@ -133,8 +194,13 @@ function UsersConected({ userconec }) {
         </Fade>
       </Modal>
       {user.uid !== userconec.uid ? (
-        <Menu menuButton={<Avatar src={userconec.photo} />}>
-          <MenuItem onClick={handleOpen}>Chat</MenuItem>
+        <Menu
+          className={classes.menu}
+          menuButton={<Avatar src={userconec.photo} />}
+        >
+          <MenuItem onClick={handleOpen} className={classes.menuitem}>
+            Send a message
+          </MenuItem>
           {/* <MenuItem>Add as Friend</MenuItem>
         <MenuItem>Report User</MenuItem> */}
         </Menu>

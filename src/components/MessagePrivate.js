@@ -16,8 +16,10 @@ function MessagePrivate({ privatemessage }) {
           >
             {privatemessage.message}
           </p>
-          <p className="messageprivate__time">
-            {new Date(privatemessage.created?.toDate()).toLocaleTimeString()}
+          <p className="messageprivate__time1">
+            {new Date(privatemessage.created?.toDate())
+              .toLocaleTimeString()
+              .substring(0, 5)}
           </p>
         </div>
       ) : (
@@ -31,8 +33,10 @@ function MessagePrivate({ privatemessage }) {
           >
             {privatemessage.message}
           </p>
-          <p className="messageprivate__time">
-            {new Date(privatemessage.created?.toDate()).toLocaleTimeString()}
+          <p className="messageprivate__time2">
+            {new Date(privatemessage.created?.toDate())
+              .toLocaleTimeString()
+              .substring(0, 5)}
           </p>
         </div>
       )}

@@ -9,6 +9,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@tinymce/tinymce-react": "^3.8.1",
+    "emoji-picker-react": "^3.2.4",
     "firebase": "^7.24.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -19,6 +21,7 @@
     "react-scrollbars-custom": "^4.0.25",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "sweetalert2": "^10.8.1",
     "uifx": "^2.0.7"
   },
   "scripts": {

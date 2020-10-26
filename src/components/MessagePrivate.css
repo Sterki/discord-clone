@@ -26,14 +26,29 @@
 }
 .messageprivate {
   display: flex;
+  width: 90%;
+  margin-left: 1rem;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+  margin-top: 0.7rem;
 }
 .messageprivate2 {
   display: flex;
+  width: 90%;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
+  margin-top: 0.7rem;
+  margin-left: 1rem;
 }
-.messageprivate__time {
+.messageprivate__time1 {
   color: gray;
+  position: absolute;
+  right: -6%;
+}
+.messageprivate__time2 {
+  color: gray;
+  position: absolute;
+  right: -6%;
 }

@@ -20,3 +20,42 @@
   background-color: rgb(49, 50, 51);
   border-radius: 20px;
 }
+
+.loading {
+  font-size: 1rem;
+  color: rgb(8, 95, 8);
+  font-weight: 600;
+}
+.noloading {
+  display: none;
+}
+.loading:after {
+  content: "....";
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis-dot 2.2s infinite 0.7s;
+  animation-fill-mode: fowards;
+  width: 1.25em;
+}
+
+@keyframes ellipsis-dot {
+  20% {
+    content: "";
+  }
+
+  40% {
+    content: ".";
+  }
+
+  60% {
+    content: "..";
+  }
+
+  80% {
+    content: "...";
+  }
+  100% {
+    content: "....";
+  }
+}

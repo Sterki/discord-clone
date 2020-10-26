@@ -18,6 +18,7 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Swal from "sweetalert2";
 
 const StyledMenu = withStyles({
   paper: {
@@ -94,16 +95,30 @@ function Sidebarprincipal() {
         console.log(error.message);
       });
   };
+
   const handleClickAdd = () => {
-    let channelname = prompt("Choice a name for your Channel");
-    db.collection("channels")
-      .add({
-        channelName: channelname,
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .catch((error) => {
-        console.log(error.message);
+    (async () => {
+      const { value: channelname } = await Swal.fire({
+        input: "text",
+        inputPlaceholder: "Enter your Channel Name",
+        position: "top-start",
+        width: "24rem",
+        padding: "1rem",
+        background: "#f2f2f2",
+        confirmButtonColor: "rgb(32, 34, 36)",
+        confirmButtonText: "Add Channel",
       });
+      if (channelname) {
+        db.collection("channels")
+          .add({
+            channelName: channelname,
+            created: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+          .catch((error) => {
+            console.log(error.message);
+          });
+      }
+    })();
   };
   useEffect(() => {
     db.collection("channels")

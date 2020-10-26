@@ -28,21 +28,25 @@ function Chat() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    db.collection("channels")
-      .doc(channelid)
-      .collection("messages")
-      .add({
-        post: message,
-        created: firebase.firestore.FieldValue.serverTimestamp(),
-        user,
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-    setMessage("");
-    bell.play();
-    let chat = document.getElementById("chat__chatcontainer");
-    chat.scrollTop = chat.scrollHeight;
+    if (message === "") {
+      return;
+    } else {
+      db.collection("channels")
+        .doc(channelid)
+        .collection("messages")
+        .add({
+          post: message,
+          created: firebase.firestore.FieldValue.serverTimestamp(),
+          user,
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+      setMessage("");
+      bell.play();
+      let chat = document.getElementById("chat__chatcontainer");
+      chat.scrollTop = chat.scrollHeight;
+    }
   };
 
   useEffect(() => {
